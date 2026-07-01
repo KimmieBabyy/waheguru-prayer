@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Click for a Prayer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gurmukhi:wght@400;600;700&family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -16,71 +16,128 @@
 
 body {
   min-height: 100vh;
-  background: radial-gradient(circle at top, #fff6df, #f7ead3, #ead7b8);
-  font-family: Poppins, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 22px;
-  color: #2d261c;
+  font-family: Poppins, sans-serif;
+  color: #2e261b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
+  background:
+    radial-gradient(circle at top, #fff7df 0%, #f4dfb7 42%, #d9b66f 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.55), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(255,255,255,.35), transparent 24%),
+    radial-gradient(circle at 50% 90%, rgba(255,255,255,.28), transparent 32%);
+  pointer-events: none;
 }
 
 .card {
   width: 100%;
   max-width: 720px;
   text-align: center;
-  padding: 34px 24px;
-  border-radius: 30px;
-  background: rgba(255, 252, 244, 0.88);
-  border: 2px solid rgba(196, 155, 63, 0.45);
-  box-shadow: 0 18px 50px rgba(83, 55, 20, 0.18);
+  padding: 36px 24px 30px;
+  border-radius: 34px;
+  background: linear-gradient(
+    rgba(255,253,248,.96),
+    rgba(255,248,235,.94)
+  );
+  border: 1px solid rgba(190, 143, 41, .36);
+  box-shadow:
+    0 18px 55px rgba(73, 47, 13, .18),
+    0 0 90px rgba(214, 170, 53, .16);
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(198, 151, 38, .35);
+  border-radius: 26px;
+  pointer-events: none;
 }
 
 .ikonkar {
   font-family: "Noto Sans Gurmukhi", sans-serif;
-  font-size: 58px;
-  color: #b88918;
-  margin-bottom: 6px;
+  font-size: 66px;
+  color: #c79523;
+  text-shadow:
+    0 0 12px rgba(215,170,60,.38),
+    0 0 30px rgba(215,170,60,.22);
+  animation: pulse 5s ease-in-out infinite;
+  margin-bottom: 4px;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.045); }
 }
 
 h1 {
   font-family: "Cormorant Garamond", serif;
-  font-size: 46px;
-  color: #11233f;
+  font-size: 48px;
   letter-spacing: 1px;
+  color: #10233f;
+  margin-bottom: 8px;
 }
 
 .subtitle {
-  margin: 10px 0 26px;
   font-size: 15px;
-  opacity: 0.75;
+  opacity: .72;
+  margin-bottom: 26px;
 }
 
 button {
+  position: relative;
+  overflow: hidden;
   border: none;
   border-radius: 999px;
-  padding: 16px 32px;
-  background: linear-gradient(135deg, #c99b2b, #e1bd5b);
+  padding: 16px 34px;
+  background: linear-gradient(135deg, #b88616, #e4bf5a, #b88616);
   color: white;
   font-size: 17px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(166, 121, 26, 0.28);
+  box-shadow: 0 10px 24px rgba(166,121,26,.32);
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.62), transparent);
+  transform: skewX(-20deg);
+  animation: shine 4.5s infinite;
+}
+
+@keyframes shine {
+  0% { left: -130%; }
+  35% { left: 145%; }
+  100% { left: 145%; }
 }
 
 button:active {
-  transform: scale(0.97);
+  transform: scale(.97);
 }
 
 .prayerBox {
   margin-top: 30px;
-  min-height: 300px;
+  min-height: 310px;
   opacity: 0;
   transform: translateY(14px);
-  transition: 0.6s ease;
+  transition: .65s ease;
 }
 
 .show {
@@ -91,9 +148,16 @@ button:active {
 .punjabi {
   font-family: "Noto Sans Gurmukhi", sans-serif;
   font-size: 24px;
-  line-height: 1.8;
-  color: #111f38;
-  margin-bottom: 20px;
+  line-height: 1.85;
+  color: #10233f;
+  margin-bottom: 18px;
+}
+
+.divider {
+  color: #c79523;
+  font-size: 18px;
+  margin: 14px 0 18px;
+  letter-spacing: 8px;
 }
 
 .english {
@@ -102,44 +166,82 @@ button:active {
   color: #3d3328;
 }
 
-.divider {
-  width: 110px;
-  height: 1px;
-  background: #c99b2b;
-  margin: 18px auto;
-}
-
 .footer {
-  margin-top: 26px;
-  font-size: 13px;
-  letter-spacing: 1px;
-  opacity: 0.65;
+  margin-top: 24px;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  opacity: .62;
 }
 
 .sparkle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
+  position: fixed;
+  width: 3px;
+  height: 3px;
   background: #d6aa35;
   border-radius: 50%;
-  opacity: 0.45;
-  animation: float linear infinite;
+  filter: blur(.4px);
+  opacity: .5;
+  pointer-events: none;
+  animation: floatSparkle linear infinite;
 }
 
-@keyframes float {
+@keyframes floatSparkle {
   from {
     transform: translateY(110vh);
     opacity: 0;
   }
-  25% {
-    opacity: 0.5;
-  }
-  75% {
-    opacity: 0.5;
+  25%, 75% {
+    opacity: .55;
   }
   to {
     transform: translateY(-10vh);
     opacity: 0;
+  }
+}
+
+.khandaCharm {
+  position: fixed;
+  width: 58px;
+  height: 58px;
+  opacity: .075;
+  pointer-events: none;
+  animation: floatKhanda linear infinite;
+  z-index: 1;
+}
+
+@keyframes floatKhanda {
+  0% {
+    transform: translateY(115vh) rotate(0deg);
+    opacity: 0;
+  }
+  25%, 75% {
+    opacity: .095;
+  }
+  100% {
+    transform: translateY(-20vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 32px 18px 26px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .ikonkar {
+    font-size: 58px;
+  }
+
+  .punjabi {
+    font-size: 21px;
+  }
+
+  .english {
+    font-size: 16px;
   }
 }
 </style>
@@ -149,8 +251,12 @@ button:active {
 
 <div class="card">
   <div class="ikonkar">ੴ</div>
+
   <h1>Click for a Prayer</h1>
-  <div class="subtitle">Take a quiet moment with Waheguru.</div>
+
+  <div class="subtitle">
+    Take a quiet moment with Waheguru.
+  </div>
 
   <button onclick="newPrayer()">🙏 Read a Prayer</button>
 
@@ -182,6 +288,10 @@ const prayers = [
   {
     punjabi: `ਵਾਹਿਗੁਰੂ ਜੀ,<br>ਮੇਰੇ ਦਿਲ ਵਿੱਚ ਦਇਆ ਭਰੋ।<br>ਮੇਰੀ ਸੋਚ ਨੂੰ ਸਾਫ਼ ਅਤੇ ਮੇਰੇ ਕਦਮਾਂ ਨੂੰ ਸਹੀ ਰਾਹ ਤੇ ਰੱਖੋ।`,
     english: `Waheguru Ji,<br>Fill my heart with compassion.<br>Keep my thoughts clear and my steps on the right path.`
+  },
+  {
+    punjabi: `ਵਾਹਿਗੁਰੂ ਜੀ,<br>ਮੈਨੂੰ ਨਿਮਰਤਾ, ਸਬਰ ਅਤੇ ਪਿਆਰ ਬਖ਼ਸ਼ੋ।<br>ਮੇਰੇ ਹਰ ਕਦਮ ਵਿੱਚ ਤੁਹਾਡੀ ਯਾਦ ਰਹੇ।`,
+    english: `Waheguru Ji,<br>Bless me with humility, patience, and love.<br>May I remember You with every step I take.`
   }
 ];
 
@@ -193,21 +303,52 @@ function newPrayer() {
     const prayer = prayers[Math.floor(Math.random() * prayers.length)];
     box.innerHTML = `
       <div class="punjabi">${prayer.punjabi}</div>
-      <div class="divider"></div>
+      <div class="divider">✦ ✦ ✦</div>
       <div class="english">${prayer.english}</div>
     `;
     box.classList.add("show");
   }, 250);
 }
 
-for (let i = 0; i < 35; i++) {
-  const s = document.createElement("div");
-  s.className = "sparkle";
-  s.style.left = Math.random() * 100 + "vw";
-  s.style.animationDuration = 8 + Math.random() * 10 + "s";
-  s.style.animationDelay = Math.random() * 8 + "s";
-  document.body.appendChild(s);
+function createSparkles() {
+  for (let i = 0; i < 45; i++) {
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.animationDuration = 8 + Math.random() * 12 + "s";
+    s.style.animationDelay = Math.random() * 10 + "s";
+    document.body.appendChild(s);
+  }
 }
+
+function createKhandaCharms() {
+  const khandaSVG = `
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 8 C54 25 54 39 50 56 C46 39 46 25 50 8Z" fill="#b88616"/>
+    <path d="M50 56 C38 42 30 30 25 14 C40 22 50 35 50 56Z" fill="#b88616"/>
+    <path d="M50 56 C62 42 70 30 75 14 C60 22 50 35 50 56Z" fill="#b88616"/>
+    <path d="M50 20 C66 20 79 34 79 50 C79 66 66 80 50 80 C34 80 21 66 21 50 C21 34 34 20 50 20Z" stroke="#b88616" stroke-width="6"/>
+    <path d="M20 30 C33 45 37 62 27 86" stroke="#b88616" stroke-width="7" stroke-linecap="round"/>
+    <path d="M80 30 C67 45 63 62 73 86" stroke="#b88616" stroke-width="7" stroke-linecap="round"/>
+    <path d="M50 10 V92" stroke="#b88616" stroke-width="7" stroke-linecap="round"/>
+  </svg>`;
+
+  for (let i = 0; i < 12; i++) {
+    const k = document.createElement("div");
+    k.className = "khandaCharm";
+    k.innerHTML = khandaSVG;
+    k.style.left = Math.random() * 100 + "vw";
+    k.style.width = 36 + Math.random() * 48 + "px";
+    k.style.height = k.style.width;
+    k.style.animationDuration = 24 + Math.random() * 22 + "s";
+    k.style.animationDelay = Math.random() * 18 + "s";
+    document.body.appendChild(k);
+  }
+}
+
+createSparkles();
+createKhandaCharms();
+newPrayer();
 </script>
 
 </body>
