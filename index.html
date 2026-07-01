@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Click for a Prayer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:linear-gradient(180deg,#fdf7ee,#fffdf8);
+
+font-family:Poppins,sans-serif;
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+overflow:hidden;
+
+color:#3f3325;
+
+}
+
+.container{
+
+width:90%;
+max-width:700px;
+
+text-align:center;
+
+padding:40px;
+
+background:rgba(255,255,255,.75);
+
+backdrop-filter:blur(14px);
+
+border-radius:28px;
+
+box-shadow:0 10px 40px rgba(0,0,0,.08);
+
+position:relative;
+
+z-index:2;
+
+}
+
+h1{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:48px;
+
+margin-bottom:8px;
+
+}
+
+.subtitle{
+
+font-size:16px;
+
+opacity:.75;
+
+margin-bottom:35px;
+
+}
+
+button{
+
+padding:18px 34px;
+
+font-size:18px;
+
+border:none;
+
+border-radius:999px;
+
+background:#d4af37;
+
+color:white;
+
+cursor:pointer;
+
+transition:.25s;
+
+font-weight:600;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+background:#c59d22;
+
+}
+
+.prayer{
+
+margin-top:35px;
+
+font-size:20px;
+
+line-height:1.8;
+
+opacity:0;
+
+transform:translateY(15px);
+
+transition:.7s;
+
+min-height:220px;
+
+}
+
+.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.footer{
+
+margin-top:30px;
+
+font-size:14px;
+
+opacity:.6;
+
+}
+
+.sparkle{
+
+position:absolute;
+
+width:6px;
+
+height:6px;
+
+background:#d4af37;
+
+border-radius:50%;
+
+opacity:.4;
+
+animation:float linear infinite;
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(110vh);
+opacity:0;
+}
+
+20%{
+opacity:.5;
+}
+
+80%{
+opacity:.5;
+}
+
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🙏 Click for a Prayer</h1>
+
+<div class="subtitle">
+Take a quiet moment with Waheguru.
+</div>
+
+<button onclick="newPrayer()">
+Receive Prayer
+</button>
+
+<div id="prayer" class="prayer"></div>
+
+<div class="footer">
+Waheguru Ji Ka Khalsa • Waheguru Ji Ki Fateh
+</div>
+
+</div>
+
+<script>
+
+const prayers=[
+
+`<strong>Waheguru,</strong><br><br>
+Guide my thoughts, my words, and my actions today.
+Help me live with kindness, humility, and courage.
+May I remember You in every moment and trust in Your will.`,
+
+`<strong>Waheguru,</strong><br><br>
+Bless my family with peace, health, and love.
+Help us support one another with patience and compassion,
+and fill our home with gratitude.`,
+
+`<strong>Waheguru,</strong><br><br>
+When I feel overwhelmed,
+replace my worries with faith.
+Help me find strength through Your presence
+and peace in accepting Your Hukam.`,
+
+`<strong>Waheguru,</strong><br><br>
+Thank You for the gift of today.
+May I use this day to serve others,
+speak with kindness,
+and walk the path of honesty.`,
+
+`<strong>Waheguru,</strong><br><br>
+Help me forgive those who have hurt me,
+and forgive me for the times I have hurt others.
+Fill my heart with compassion instead of anger.`,
+
+`<strong>Waheguru,</strong><br><br>
+Grant me wisdom to make good decisions,
+strength to overcome challenges,
+and humility to remember that every blessing comes from You.`,
+
+`<strong>Waheguru,</strong><br><br>
+May my heart remain thankful,
+my mind remain peaceful,
+and my actions reflect love for all humanity.`
+
+];
+
+function newPrayer(){
+
+const box=document.getElementById("prayer");
+
+box.classList.remove("show");
+
+setTimeout(()=>{
+
+const random=Math.floor(Math.random()*prayers.length);
+
+box.innerHTML=prayers[random];
+
+box.classList.add("show");
+
+},250);
+
+}
+
+for(let i=0;i<40;i++){
+
+const s=document.createElement("div");
+
+s.className="sparkle";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.animationDuration=(8+Math.random()*10)+"s";
+
+s.style.animationDelay=Math.random()*8+"s";
+
+document.body.appendChild(s);
+
+}
+
+</script>
+
+</body>
+</html>
