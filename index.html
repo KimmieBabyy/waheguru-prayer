@@ -3,291 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Click for a Prayer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gurmukhi:wght@400;600;700&family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-
-background:linear-gradient(180deg,#fdf7ee,#fffdf8);
-
-font-family:Poppins,sans-serif;
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-overflow:hidden;
-
-color:#3f3325;
-
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #fff6df, #f7ead3, #ead7b8);
+  font-family: Poppins, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 22px;
+  color: #2d261c;
+  overflow: hidden;
 }
 
-.container{
-
-width:90%;
-max-width:700px;
-
-text-align:center;
-
-padding:40px;
-
-background:rgba(255,255,255,.75);
-
-backdrop-filter:blur(14px);
-
-border-radius:28px;
-
-box-shadow:0 10px 40px rgba(0,0,0,.08);
-
-position:relative;
-
-z-index:2;
-
+.card {
+  width: 100%;
+  max-width: 720px;
+  text-align: center;
+  padding: 34px 24px;
+  border-radius: 30px;
+  background: rgba(255, 252, 244, 0.88);
+  border: 2px solid rgba(196, 155, 63, 0.45);
+  box-shadow: 0 18px 50px rgba(83, 55, 20, 0.18);
+  position: relative;
+  z-index: 2;
 }
 
-h1{
-
-font-family:"Cormorant Garamond",serif;
-
-font-size:48px;
-
-margin-bottom:8px;
-
+.ikonkar {
+  font-family: "Noto Sans Gurmukhi", sans-serif;
+  font-size: 58px;
+  color: #b88918;
+  margin-bottom: 6px;
 }
 
-.subtitle{
-
-font-size:16px;
-
-opacity:.75;
-
-margin-bottom:35px;
-
+h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 46px;
+  color: #11233f;
+  letter-spacing: 1px;
 }
 
-button{
-
-padding:18px 34px;
-
-font-size:18px;
-
-border:none;
-
-border-radius:999px;
-
-background:#d4af37;
-
-color:white;
-
-cursor:pointer;
-
-transition:.25s;
-
-font-weight:600;
-
+.subtitle {
+  margin: 10px 0 26px;
+  font-size: 15px;
+  opacity: 0.75;
 }
 
-button:hover{
-
-transform:scale(1.05);
-
-background:#c59d22;
-
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #c99b2b, #e1bd5b);
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(166, 121, 26, 0.28);
 }
 
-.prayer{
-
-margin-top:35px;
-
-font-size:20px;
-
-line-height:1.8;
-
-opacity:0;
-
-transform:translateY(15px);
-
-transition:.7s;
-
-min-height:220px;
-
+button:active {
+  transform: scale(0.97);
 }
 
-.show{
-
-opacity:1;
-
-transform:translateY(0);
-
+.prayerBox {
+  margin-top: 30px;
+  min-height: 300px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: 0.6s ease;
 }
 
-.footer{
-
-margin-top:30px;
-
-font-size:14px;
-
-opacity:.6;
-
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.sparkle{
-
-position:absolute;
-
-width:6px;
-
-height:6px;
-
-background:#d4af37;
-
-border-radius:50%;
-
-opacity:.4;
-
-animation:float linear infinite;
-
+.punjabi {
+  font-family: "Noto Sans Gurmukhi", sans-serif;
+  font-size: 24px;
+  line-height: 1.8;
+  color: #111f38;
+  margin-bottom: 20px;
 }
 
-@keyframes float{
-
-0%{
-transform:translateY(110vh);
-opacity:0;
+.english {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #3d3328;
 }
 
-20%{
-opacity:.5;
+.divider {
+  width: 110px;
+  height: 1px;
+  background: #c99b2b;
+  margin: 18px auto;
 }
 
-80%{
-opacity:.5;
+.footer {
+  margin-top: 26px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  opacity: 0.65;
 }
 
-100%{
-transform:translateY(-10vh);
-opacity:0;
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #d6aa35;
+  border-radius: 50%;
+  opacity: 0.45;
+  animation: float linear infinite;
 }
 
+@keyframes float {
+  from {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
 }
-
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
+<div class="card">
+  <div class="ikonkar">ੴ</div>
+  <h1>Click for a Prayer</h1>
+  <div class="subtitle">Take a quiet moment with Waheguru.</div>
 
-<h1>🙏 Click for a Prayer</h1>
+  <button onclick="newPrayer()">🙏 Read a Prayer</button>
 
-<div class="subtitle">
-Take a quiet moment with Waheguru.
-</div>
+  <div id="prayerBox" class="prayerBox"></div>
 
-<button onclick="newPrayer()">
-Receive Prayer
-</button>
-
-<div id="prayer" class="prayer"></div>
-
-<div class="footer">
-Waheguru Ji Ka Khalsa • Waheguru Ji Ki Fateh
-</div>
-
+  <div class="footer">
+    WAHEGURU JI KA KHALSA • WAHEGURU JI KI FATEH
+  </div>
 </div>
 
 <script>
-
-const prayers=[
-
-`<strong>Waheguru,</strong><br><br>
-Guide my thoughts, my words, and my actions today.
-Help me live with kindness, humility, and courage.
-May I remember You in every moment and trust in Your will.`,
-
-`<strong>Waheguru,</strong><br><br>
-Bless my family with peace, health, and love.
-Help us support one another with patience and compassion,
-and fill our home with gratitude.`,
-
-`<strong>Waheguru,</strong><br><br>
-When I feel overwhelmed,
-replace my worries with faith.
-Help me find strength through Your presence
-and peace in accepting Your Hukam.`,
-
-`<strong>Waheguru,</strong><br><br>
-Thank You for the gift of today.
-May I use this day to serve others,
-speak with kindness,
-and walk the path of honesty.`,
-
-`<strong>Waheguru,</strong><br><br>
-Help me forgive those who have hurt me,
-and forgive me for the times I have hurt others.
-Fill my heart with compassion instead of anger.`,
-
-`<strong>Waheguru,</strong><br><br>
-Grant me wisdom to make good decisions,
-strength to overcome challenges,
-and humility to remember that every blessing comes from You.`,
-
-`<strong>Waheguru,</strong><br><br>
-May my heart remain thankful,
-my mind remain peaceful,
-and my actions reflect love for all humanity.`
-
+const prayers = [
+  {
+    punjabi: `ਵਾਹਿਗੁਰੂ ਜੀ,<br>ਮੇਰੇ ਮਨ ਨੂੰ ਸ਼ਾਂਤੀ ਬਖ਼ਸ਼ੋ।<br>ਮੇਰੇ ਬੋਲਾਂ ਵਿੱਚ ਮਿੱਠਾਸ ਅਤੇ ਮੇਰੇ ਕਰਮਾਂ ਵਿੱਚ ਦਇਆ ਰੱਖੋ।`,
+    english: `Waheguru Ji,<br>Grant peace to my mind.<br>Keep sweetness in my words and kindness in my actions.`
+  },
+  {
+    punjabi: `ਵਾਹਿਗੁਰੂ ਜੀ,<br>ਮੇਰੇ ਪਰਿਵਾਰ ਨੂੰ ਸਿਹਤ, ਪਿਆਰ ਅਤੇ ਚੜ੍ਹਦੀ ਕਲਾ ਬਖ਼ਸ਼ੋ।<br>ਸਾਨੂੰ ਹਮੇਸ਼ਾ ਇਕ ਦੂਜੇ ਦਾ ਸਹਾਰਾ ਬਣਾਓ।`,
+    english: `Waheguru Ji,<br>Bless my family with health, love, and Chardi Kala.<br>Help us always support one another.`
+  },
+  {
+    punjabi: `ਵਾਹਿਗੁਰੂ ਜੀ,<br>ਜਦੋਂ ਮੈਂ ਚਿੰਤਾ ਵਿੱਚ ਹਾਂ, ਮੈਨੂੰ ਭਰੋਸਾ ਬਖ਼ਸ਼ੋ।<br>ਜਦੋਂ ਮੈਂ ਕਮਜ਼ੋਰ ਮਹਿਸੂਸ ਕਰਾਂ, ਮੈਨੂੰ ਹੌਸਲਾ ਦਿਓ।`,
+    english: `Waheguru Ji,<br>When I feel worried, give me faith.<br>When I feel weak, give me strength.`
+  },
+  {
+    punjabi: `ਵਾਹਿਗੁਰੂ ਜੀ,<br>ਅੱਜ ਦੇ ਦਿਨ ਲਈ ਸ਼ੁਕਰਾਨਾ।<br>ਮੈਨੂੰ ਸੇਵਾ, ਨਿਮਰਤਾ ਅਤੇ ਸੱਚ ਦੇ ਰਾਹ ਤੇ ਚਲਾਓ।`,
+    english: `Waheguru Ji,<br>Thank You for this day.<br>Guide me on the path of service, humility, and truth.`
+  },
+  {
+    punjabi: `ਵਾਹਿਗੁਰੂ ਜੀ,<br>ਮੇਰੇ ਦਿਲ ਵਿੱਚ ਦਇਆ ਭਰੋ।<br>ਮੇਰੀ ਸੋਚ ਨੂੰ ਸਾਫ਼ ਅਤੇ ਮੇਰੇ ਕਦਮਾਂ ਨੂੰ ਸਹੀ ਰਾਹ ਤੇ ਰੱਖੋ।`,
+    english: `Waheguru Ji,<br>Fill my heart with compassion.<br>Keep my thoughts clear and my steps on the right path.`
+  }
 ];
 
-function newPrayer(){
+function newPrayer() {
+  const box = document.getElementById("prayerBox");
+  box.classList.remove("show");
 
-const box=document.getElementById("prayer");
-
-box.classList.remove("show");
-
-setTimeout(()=>{
-
-const random=Math.floor(Math.random()*prayers.length);
-
-box.innerHTML=prayers[random];
-
-box.classList.add("show");
-
-},250);
-
+  setTimeout(() => {
+    const prayer = prayers[Math.floor(Math.random() * prayers.length)];
+    box.innerHTML = `
+      <div class="punjabi">${prayer.punjabi}</div>
+      <div class="divider"></div>
+      <div class="english">${prayer.english}</div>
+    `;
+    box.classList.add("show");
+  }, 250);
 }
 
-for(let i=0;i<40;i++){
-
-const s=document.createElement("div");
-
-s.className="sparkle";
-
-s.style.left=Math.random()*100+"vw";
-
-s.style.animationDuration=(8+Math.random()*10)+"s";
-
-s.style.animationDelay=Math.random()*8+"s";
-
-document.body.appendChild(s);
-
+for (let i = 0; i < 35; i++) {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.animationDuration = 8 + Math.random() * 10 + "s";
+  s.style.animationDelay = Math.random() * 8 + "s";
+  document.body.appendChild(s);
 }
-
 </script>
 
 </body>
